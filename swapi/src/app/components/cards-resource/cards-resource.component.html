@@ -1,0 +1,13 @@
+<div class="center">
+    <section class="cards-wrapper">
+        <article *ngFor="let people of resources.people">
+            <mat-card class="cards-item example-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{people.name}}</mat-card-title>
+                    <mat-card-subtitle>Last changes {{people.edited | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </article>
+    </section>
+</div>

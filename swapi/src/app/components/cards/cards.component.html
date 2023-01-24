@@ -1,0 +1,15 @@
+<div class="center">
+    <section class="cards-wrapper">
+        <article *ngFor="let resources of rootResources.resources">
+            <a routerLink="resource" class="mr-2">
+                <mat-card class="cards-item example-card">
+                    <mat-card-content>
+                        <p>
+                            {{resources}}
+                        </p>
+                    </mat-card-content>
+                </mat-card>
+            </a>
+        </article>
+    </section>
+</div>
