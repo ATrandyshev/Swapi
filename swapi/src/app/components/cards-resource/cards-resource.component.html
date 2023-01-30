@@ -3,7 +3,7 @@
 
     <ng-template #content>
         <article class="cards__item" *ngFor="let resource of selectResource$ | async">
-            <a class="cards__item-content" [routerLink]="['description', resource.name ?? resource.title]">
+            <a class="cards__item-content" [routerLink]="['description', resource.name]">
                 <mat-card class="cards__item-content example-card">
                     <mat-card-content>
                         <img class="cards__img" mat-card-image src="../../../assets/imgs/DarthVader.png"
