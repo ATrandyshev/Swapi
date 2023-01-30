@@ -39,41 +39,19 @@ export class CardsResourceComponent implements OnInit {
     private res: ResourceService,
     private resQuery: ResourcesQuery,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.route.paramMap
+      .pipe(switchMap((params) => params.getAll('category')))
+      .subscribe((category) => (this.categoryName = category));
+  }
 
   ngOnInit(): void {
     this.resQuery.selectLoading().subscribe((isLoading) => {
       this.isLoading = isLoading;
     });
 
-    this.route.paramMap
-      .pipe(switchMap((params) => params.getAll('category')))
-      .subscribe((category) => (this.categoryName = category));
+    this.resourceName = this.getResourceName(this.categoryName);
 
-    switch (this.categoryName) {
-      case EResourceName.people:
-        this.resourceName = EResourceName.people;
-        break;
-      case EResourceName.films:
-        this.resourceName = EResourceName.films;
-        break;
-      case EResourceName.planets:
-        this.resourceName = EResourceName.planets;
-        break;
-      case EResourceName.species:
-        this.resourceName = EResourceName.species;
-        break;
-      case EResourceName.starships:
-        this.resourceName = EResourceName.starships;
-        break;
-      case EResourceName.vehicles:
-        this.resourceName = EResourceName.vehicles;
-        break;
-    }
-
-    // this.resQuery.getValue().resources;
-    // this.selectResource$.subscribe(e => e.)
-    // if (!this.resQuery.getHasCache()) {
     if (this.resQuery.getValue().resources[this.resourceName].length === 0) {
       this.res.getResources(this.resourceName);
     }
@@ -97,6 +75,23 @@ export class CardsResourceComponent implements OnInit {
       case EResourceName.vehicles:
         this.selectResource$ = this.resQuery.selectVehicles$;
         break;
+    }
+  }
+
+  getResourceName(category: string): EResourceName {
+    switch (category) {
+      case EResourceName.people:
+        return (this.resourceName = EResourceName.people);
+      case EResourceName.films:
+        return (this.resourceName = EResourceName.films);
+      case EResourceName.planets:
+        return (this.resourceName = EResourceName.planets);
+      case EResourceName.species:
+        return (this.resourceName = EResourceName.species);
+      case EResourceName.starships:
+        return (this.resourceName = EResourceName.starships);
+      default:
+        return (this.resourceName = EResourceName.vehicles);
     }
   }
 }
