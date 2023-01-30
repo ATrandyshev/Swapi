@@ -1,7 +1,11 @@
 # Swapi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
-Add state management: akita version 8.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
+
+## **Frontend**
+- Angular version 15.1.2
+- Akita version 8.0.0
+- Angular Material 15
 
 ## Выложено демо на хостин vercel.
 **[LIVE DEMO](https://swapi-kyhs.vercel.app/)**
