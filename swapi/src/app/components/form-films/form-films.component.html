@@ -1,0 +1,125 @@
+<h2 class="form__header">
+    {{nameFilm}}
+</h2>
+
+<form class="form" [formGroup]="filmForm" novalidate (ngSubmit)="submit()">
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Episode id</mat-label>
+
+            <input matInput type="number" formControlName="episode_id">
+
+            <mat-error *ngIf="filmForm.controls.episode_id.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="filmForm.controls.episode_id.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class=" form-item" appearance="fill">
+            <mat-label>Opening crawl</mat-label>
+
+            <input matInput #opening_crawl maxlength="200" type="text" formControlName="opening_crawl">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{opening_crawl.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="filmForm.controls.opening_crawl.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Director</mat-label>
+
+            <input matInput #director maxlength="200" type="text" formControlName="director">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{director.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="filmForm.controls.director.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Producer</mat-label>
+
+            <input matInput #producer maxlength="200" type="text" formControlName="producer">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{producer.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="filmForm.controls.producer.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Release date</mat-label>
+
+            <input matInput [matDatepicker]="picker1" formControlName="release_date">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker1></mat-datepicker>
+
+            <mat-error *ngIf="filmForm.controls.release_date.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Created</mat-label>
+
+            <input matInput [matDatepicker]="picker2" formControlName="created">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker2></mat-datepicker>
+
+            <mat-error *ngIf="filmForm.controls.created.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <mat-form-field class="form-item" appearance="fill">
+        <mat-label>Edited</mat-label>
+
+        <input matInput [matDatepicker]="picker3" formControlName="edited">
+
+        <mat-hint>DD.MM.YYYY</mat-hint>
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+
+        <mat-datepicker #picker3></mat-datepicker>
+
+        <mat-error *ngIf="filmForm.controls.edited.hasError('required')">
+            Field is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <div class="form__button">
+        <button id="save" class="form__button_submit" mat-raised-button color="primary"
+            [disabled]="isEditing ? isEditing : filmForm.invalid" matSnackBarAction (click)="openSnackBar()">
+            Save
+        </button>
+
+        <button class="form__button_edit" mat-raised-button color="accent" (click)="onClickChangeEditing()">
+            Edit
+        </button>
+    </div>
+</form>

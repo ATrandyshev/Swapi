@@ -1,0 +1,62 @@
+$white: #fff;
+$black: #000;
+$header__background-color: $black;
+$form__header_color: $white;
+$form__hint-length_color: $white;
+$form__button-save_disabled-background-color: rgba(118, 88, 169, 1);
+$form__button-save_disabled-color: $black;
+
+@mixin form-item__column_4 {
+  &-item {
+    align-self: center;
+    width: 22%;
+    margin: 10px;
+  }
+}
+
+@mixin form-item__column_3 {
+  &-item {
+    align-self: center;
+    width: 30%;
+    margin: 10px;
+  }
+}
+
+@mixin form {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  &__header {
+    padding: 30px 0;
+    color: $form__header_color;
+    text-align: center;
+    font-size: 25px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-evenly;
+
+    &_submit {
+      width: 25%;
+      height: 50px;
+    }
+
+    #save:disabled {
+      background-color: $form__button-save_disabled-background-color;
+      color: $form__button-save_disabled-color;
+    }
+
+    &_edit {
+      width: 25%;
+      height: 50px;
+    }
+  }
+
+  &__hint_length {
+    color: $form__hint-length_color;
+  }
+}

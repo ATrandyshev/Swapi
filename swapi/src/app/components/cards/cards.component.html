@@ -1,15 +1,17 @@
-<div class="center">
-    <section class="cards-wrapper">
-        <article *ngFor="let resources of rootResources.resources">
-            <a routerLink="resource" class="mr-2">
-                <mat-card class="cards-item example-card">
-                    <mat-card-content>
+<div class="cards" @animationAppearance>
+    <section class="cards__wrapper">
+        <app-spinner [isResourcesLoading]="isLoading" *ngIf="isLoading; else content"></app-spinner>
+
+        <ng-template #content>
+            <article class="cards__item" *ngFor="let category of categorys$ | async">
+                <a class="cards__item-content" [routerLink]="['resources', category]">
+                    <mat-card class="cards__item-content">
                         <p>
-                            {{resources}}
+                            {{category}}
                         </p>
-                    </mat-card-content>
-                </mat-card>
-            </a>
-        </article>
+                    </mat-card>
+                </a>
+            </article>
+        </ng-template>
     </section>
 </div>

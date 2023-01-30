@@ -1,13 +1,24 @@
-<div class="center">
-    <section class="cards-wrapper">
-        <article *ngFor="let people of resources.people">
-            <mat-card class="cards-item example-card">
-                <mat-card-header>
-                    <div mat-card-avatar class="example-header-image"></div>
-                    <mat-card-title>{{people.name}}</mat-card-title>
-                    <mat-card-subtitle>Last changes {{people.edited | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
-                </mat-card-header>
-            </mat-card>
+<section class="cards__wrapper" @animationAppearance>
+    <app-spinner [isResourcesLoading]="isLoading" *ngIf="isLoading; else content"></app-spinner>
+
+    <ng-template #content>
+        <article class="cards__item" *ngFor="let resource of selectResource$ | async">
+            <a class="cards__item-content" [routerLink]="['description', resource.name ?? resource.title]">
+                <mat-card class="cards__item-content example-card">
+                    <mat-card-content>
+                        <img class="cards__img" mat-card-image src="../../../assets/imgs/DarthVader.png"
+                            alt="Photo of a Dart Weider">
+                    </mat-card-content>
+
+                    <mat-card-header>
+                        <div mat-card-avatar class="cards__avatar"></div>
+
+                        <mat-card-title>{{resource.name}} {{resource.title}}</mat-card-title>
+
+                        <mat-card-subtitle>Date created {{resource.created | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </a>
         </article>
-    </section>
-</div>
+    </ng-template>
+</section>

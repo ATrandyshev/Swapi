@@ -1,0 +1,194 @@
+<h2 class="form__header">
+    {{nameVehicles}}
+</h2>
+
+<form class="form" [formGroup]="vehiclesForm" novalidate (ngSubmit)="submit()">
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Model</mat-label>
+
+            <input matInput #model maxlength="200" type="text" formControlName="model">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{model.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="vehiclesForm.controls.model.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Vehicle class</mat-label>
+
+            <input matInput #vehicle_class maxlength="200" type="text" formControlName="vehicle_class">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{vehicle_class.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="vehiclesForm.controls.vehicle_class.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Manufacturer</mat-label>
+
+            <input matInput #manufacturer maxlength="200" type="text" formControlName="manufacturer">
+
+            <mat-hint class="form__hint_length" align="end">
+                {{manufacturer.value.length}} / 200
+            </mat-hint>
+
+            <mat-error *ngIf="vehiclesForm.controls.manufacturer.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Length</mat-label>
+
+            <input matInput type="number" formControlName="length">
+
+            <mat-error *ngIf="vehiclesForm.controls.length.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.length.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Cost in credits</mat-label>
+
+            <input matInput type="number" formControlName="cost_in_credits">
+
+            <mat-error *ngIf="vehiclesForm.controls.cost_in_credits.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.cost_in_credits.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Crew</mat-label>
+
+            <input matInput type="number" formControlName="crew">
+
+            <mat-error *ngIf="vehiclesForm.controls.crew.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.crew.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Passengers</mat-label>
+
+            <input matInput type="number" formControlName="passengers">
+
+            <mat-error *ngIf="vehiclesForm.controls.passengers.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.passengers.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Max atmosphering speed</mat-label>
+
+            <input matInput type="number" formControlName="max_atmosphering_speed">
+
+            <mat-error *ngIf="vehiclesForm.controls.max_atmosphering_speed.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.max_atmosphering_speed.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Cargo capacity</mat-label>
+
+            <input matInput type="number" formControlName="cargo_capacity">
+
+            <mat-error *ngIf="vehiclesForm.controls.cargo_capacity.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.cargo_capacity.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Consumables</mat-label>
+
+            <input matInput type="number" formControlName="consumables">
+
+            <mat-error *ngIf="vehiclesForm.controls.consumables.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="vehiclesForm.controls.consumables.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Created</mat-label>
+
+            <input matInput [matDatepicker]="picker1" formControlName="created">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker1></mat-datepicker>
+
+            <mat-error *ngIf="vehiclesForm.controls.created.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Edited</mat-label>
+
+            <input matInput [matDatepicker]="picker2" formControlName="edited">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker2></mat-datepicker>
+
+            <mat-error *ngIf="vehiclesForm.controls.edited.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form__button">
+        <button id="save" class="form__button_submit" mat-raised-button color="primary"
+            [disabled]="isEditing ? isEditing : vehiclesForm.invalid" matSnackBarAction (click)="openSnackBar()">
+            Save
+        </button>
+
+        <button class="form__button_edit" mat-raised-button color="accent" (click)="onClickChangeEditing()">
+            Edit
+        </button>
+    </div>
+</form>

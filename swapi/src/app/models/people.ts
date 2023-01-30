@@ -1,10 +1,11 @@
 export interface IPeople {
   name: string;
+  title: string;
   birth_year: string;
   eye_color: string;
   gender: string;
   hair_color: string;
-  heigh: string;
+  height: string;
   mass: string;
   skin_color: string;
   homeworld: string;

@@ -1,4 +1,14 @@
-.root {
+.main__wrapper {
   height: 100%;
-  background: #cfd8dd;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main {
+  background-image: url("../assets/imgs/backgroud.jpg");
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

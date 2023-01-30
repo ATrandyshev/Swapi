@@ -1,0 +1,156 @@
+<h2 class="form__header">
+    {{nameSpecies}}
+</h2>
+
+<form class="form" [formGroup]="speciesForm" novalidate (ngSubmit)="submit()">
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Classification</mat-label>
+
+            <input matInput #classification maxlength="200" type="text" formControlName="classification">
+
+            <mat-hint class="form__hint_length" align="end">{{classification.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.classification.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Designation</mat-label>
+
+            <input matInput #designation maxlength="200" type="text" formControlName="designation">
+
+            <mat-hint class="form__hint_length" align="end">{{designation.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.designation.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Average height</mat-label>
+
+            <input matInput type="number" formControlName="average_height">
+
+            <mat-error *ngIf="speciesForm.controls.average_height.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="speciesForm.controls.average_height.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Average lifespan</mat-label>
+
+            <input matInput type="number" formControlName="average_lifespan">
+
+            <mat-error *ngIf="speciesForm.controls.average_lifespan.hasError('pattern')">
+                Number cannot be <strong>negative</strong>
+            </mat-error>
+
+            <mat-error *ngIf="speciesForm.controls.average_lifespan.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Eye colors</mat-label>
+
+            <input matInput #eye_colors maxlength="200" type="text" formControlName="eye_colors">
+
+            <mat-hint class="form__hint_length" align="end">{{eye_colors.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.eye_colors.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Hair colors</mat-label>
+
+            <input matInput #hair_colors maxlength="200" type="text" formControlName="hair_colors">
+
+            <mat-hint class="form__hint_length" align="end">{{hair_colors.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.hair_colors.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Skin colors</mat-label>
+
+            <input matInput #skin_colors maxlength="200" type="text" formControlName="skin_colors">
+
+            <mat-hint class="form__hint_length" align="end">{{skin_colors.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.skin_colors.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Language</mat-label>
+
+            <input matInput #language maxlength="200" type="text" formControlName="language">
+
+            <mat-hint class="form__hint_length" align="end">{{language.value.length}} / 200</mat-hint>
+
+            <mat-error *ngIf="speciesForm.controls.language.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Created</mat-label>
+
+            <input matInput [matDatepicker]="picker1" formControlName="created">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker1></mat-datepicker>
+
+            <mat-error *ngIf="speciesForm.controls.created.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="form-item" appearance="fill">
+            <mat-label>Edited</mat-label>
+
+            <input matInput [matDatepicker]="picker2" formControlName="edited">
+
+            <mat-hint>DD.MM.YYYY</mat-hint>
+
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+
+            <mat-datepicker #picker2></mat-datepicker>
+
+            <mat-error *ngIf="speciesForm.controls.edited.hasError('required')">
+                Field is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form__button">
+        <button id="save" class="form__button_submit" mat-raised-button color="primary"
+            [disabled]="isEditing ? isEditing : speciesForm.invalid" matSnackBarAction (click)="openSnackBar()">
+            Save
+        </button>
+
+        <button class="form__button_edit" mat-raised-button color="accent" (click)="onClickChangeEditing()">
+            Edit
+        </button>
+    </div>
+</form>

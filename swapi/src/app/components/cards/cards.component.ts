@@ -1,20 +1,41 @@
-import { HttpClient } from '@angular/common/http';
+import { trigger, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { API } from 'src/app/data/api';
-import { RootResourcesService } from 'src/app/services/root-resources.service';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/store/category/category.model';
+import { CategorysQuery } from 'src/app/store/category/category.query';
+import { CategoryService } from 'src/app/store/category/category.service';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
+  animations: [
+    trigger('animationAppearance', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate('1.2s', style({ opacity: 1 })),
+      ]),
+      transition('* => void', [animate('1.2s', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class CardsComponent implements OnInit {
+  categorys$: Observable<Category[]>;
+  isLoading: boolean = false;
+
   constructor(
-    public rootResources: RootResourcesService,
-    private http: HttpClient
+    private catagoryQuery: CategorysQuery,
+    private catagoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
-    this.rootResources.get().subscribe();
+    this.catagoryQuery.selectLoading().subscribe((isLoading) => {
+      this.isLoading = isLoading;
+    });
+    this.categorys$ = this.catagoryQuery.selectCategorys$ as Observable<
+      Category[]
+    >;
+
+    this.catagoryService.get().subscribe();
   }
 }

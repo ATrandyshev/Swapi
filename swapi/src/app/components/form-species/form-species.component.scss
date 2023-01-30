@@ -1,0 +1,7 @@
+@import "../../styles/variable.scss";
+
+.form {
+  @include form;
+
+  @include form-item__column_3;
+}
