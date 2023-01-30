@@ -49,9 +49,9 @@ export class CardsResourceComponent implements OnInit {
       .pipe(switchMap((params) => params.getAll('category')))
       .subscribe((category) => (this.resourceName = category));
 
-    if (!this.resQuery.getHasCache()) {
-      this.res.getResources(this.resourceName);
-    }
+    // if (!this.resQuery.getHasCache()) {
+    this.res.getResources(this.resourceName);
+    // }
 
     switch (this.resourceName) {
       case EResourceName.people:

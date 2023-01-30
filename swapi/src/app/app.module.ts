@@ -76,6 +76,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MatNativeDateModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    AkitaNgDevtools.forRoot(),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'ru-RU' },
