@@ -95,10 +95,7 @@ export class ResourceService {
         newResource = this.resourcesStore
           .getValue()
           .resources.people.map((e) => {
-            if (
-              e.name ===
-              (form.controls['name'].value ?? form.controls['title'].value)
-            ) {
+            if (e.name === form.controls['name'].value) {
               return form.value;
             }
 
@@ -134,10 +131,7 @@ export class ResourceService {
         newResource = this.resourcesStore
           .getValue()
           .resources.species.map((e) => {
-            if (
-              e.name ===
-              (form.controls['name'].value ?? form.controls['title'].value)
-            ) {
+            if (e.name === form.controls['name'].value) {
               return form.value;
             }
 
@@ -149,10 +143,7 @@ export class ResourceService {
         newResource = this.resourcesStore
           .getValue()
           .resources.starships.map((e) => {
-            if (
-              e.name ===
-              (form.controls['name'].value ?? form.controls['title'].value)
-            ) {
+            if (e.name === form.controls['name'].value) {
               return form.value;
             }
 
@@ -164,10 +155,7 @@ export class ResourceService {
         newResource = this.resourcesStore
           .getValue()
           .resources.vehicles.map((e) => {
-            if (
-              e.name ===
-              (form.controls['name'].value ?? form.controls['title'].value)
-            ) {
+            if (e.name === form.controls['name'].value) {
               return form.value;
             }
 
