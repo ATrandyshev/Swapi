@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { DateAdapter } from '@angular/material/core';
-import { map } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 import { ResourcesQuery } from 'src/app/store/resource/resource.query';
 import { tObservableResource } from 'src/app/models/TObservableResource';
 import { IStarship } from 'src/app/models/starships';

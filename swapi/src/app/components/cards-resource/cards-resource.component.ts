@@ -1,7 +1,6 @@
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
 import { IFilm } from 'src/app/models/film';
 import { IPeople } from 'src/app/models/people';
 import { IPlanet } from 'src/app/models/planet';
@@ -11,6 +10,8 @@ import { IVehicles } from 'src/app/models/vehicles';
 import { ResourcesQuery } from 'src/app/store/resource/resource.query';
 import { ResourceService } from 'src/app/store/resource/resource.service';
 import { EResourceName } from 'src/app/data/EnumResourceName';
+import { Observable } from 'rxjs/internal/Observable';
+import { switchMap } from 'rxjs/internal/operators/switchMap';
 
 @Component({
   selector: 'app-cards-resource',

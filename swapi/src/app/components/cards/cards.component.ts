@@ -1,6 +1,6 @@
 import { trigger, style, transition, animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { Category } from 'src/app/store/category/category.model';
 import { CategorysQuery } from 'src/app/store/category/category.query';
 import { CategoryService } from 'src/app/store/category/category.service';
