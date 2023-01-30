@@ -28,7 +28,8 @@ import { switchMap } from 'rxjs/internal/operators/switchMap';
   ],
 })
 export class CardsResourceComponent implements OnInit {
-  resourceName: string;
+  resourceName: EResourceName;
+  categoryName: string;
   selectResource$: Observable<
     (IFilm | IPeople | IPlanet | ISpecies | IStarship | IVehicles)[]
   >;
@@ -47,11 +48,35 @@ export class CardsResourceComponent implements OnInit {
 
     this.route.paramMap
       .pipe(switchMap((params) => params.getAll('category')))
-      .subscribe((category) => (this.resourceName = category));
+      .subscribe((category) => (this.categoryName = category));
 
+    switch (this.categoryName) {
+      case EResourceName.people:
+        this.resourceName = EResourceName.people;
+        break;
+      case EResourceName.films:
+        this.resourceName = EResourceName.films;
+        break;
+      case EResourceName.planets:
+        this.resourceName = EResourceName.planets;
+        break;
+      case EResourceName.species:
+        this.resourceName = EResourceName.species;
+        break;
+      case EResourceName.starships:
+        this.resourceName = EResourceName.starships;
+        break;
+      case EResourceName.vehicles:
+        this.resourceName = EResourceName.vehicles;
+        break;
+    }
+
+    // this.resQuery.getValue().resources;
+    // this.selectResource$.subscribe(e => e.)
     // if (!this.resQuery.getHasCache()) {
-    this.res.getResources(this.resourceName);
-    // }
+    if (this.resQuery.getValue().resources[this.resourceName].length === 0) {
+      this.res.getResources(this.resourceName);
+    }
 
     switch (this.resourceName) {
       case EResourceName.people:
